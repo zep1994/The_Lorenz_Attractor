@@ -27,27 +27,31 @@ void draw() {
   x = x + dx;
   y = y + dy;
   z = z + dz;
-  
+
   points.add(new PVector(x, y, z));
-  
+
   translate(0, 0, -80);
   //translate(width/2, height/2);
   scale(5);
+  stroke(255);
   noFill();
-  
+
   float hu = 0;
   beginShape();
-      for (PVector v : points) {
-          stroke(hu, 255, 255);
-          vertex(v.x, v.y, v.z);
-          PVector offset = PVector.random3D;
-          v.add(offset);
-          offset.mult(0.1);
-          
-          hu += 0;
-          if (hu > 255) {
-            hu = 0;
-          }
-      }
-      endShape();
+  for (PVector v : points) {
+    stroke(hu, 255, 255);
+    vertex(v.x, v.y,v.z);
+    //PVector offset = PVector.random3D();
+    //offset.mult(0.1);
+    //v.add(offset);
+
+    hu += 0.1;
+    if (hu > 255) {
+      hu = 0;
+    }
+  }
+  endShape();
+
+
+  //println(x,y,z);
 }
